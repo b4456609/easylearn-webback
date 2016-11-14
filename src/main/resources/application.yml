@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: easylearn-webback
+server:
+  port: 8080
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+    healthcheck:
+      enabled: true
