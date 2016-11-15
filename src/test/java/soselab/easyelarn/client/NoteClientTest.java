@@ -42,7 +42,7 @@ public class NoteClientTest {
     @Pact(consumer = "easylearn-webback")
     public PactFragment createFragment(PactDslWithProvider builder) {
         return builder
-                .uponReceiving("ExampleJavaConsumerPactRuleTest test interaction")
+                .uponReceiving("Add note")
                 .path("/")
                 .body(new JSONObject(note))
                 .method("Post")

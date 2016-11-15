@@ -41,7 +41,7 @@ public class PackClientTest {
     @Pact(consumer = "easylearn-webback")
     public PactFragment createFragment(PactDslWithProvider builder) {
         return builder
-                .uponReceiving("ExampleJavaConsumerPactRuleTest test interaction")
+                .uponReceiving("Modify version content after adding note")
                 .path("/version")
                 .body(new JSONObject(pack))
                 .method("Put")
