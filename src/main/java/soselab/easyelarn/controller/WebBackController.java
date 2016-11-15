@@ -13,13 +13,21 @@ import soselab.easyelarn.client.PackClient;
 @RestController
 public class WebBackController {
     @Autowired
-    NoteClient noteClient;
+    private NoteClient noteClient;
     @Autowired
-    PackClient packClient;
+    private PackClient packClient;
 
-    @RequestMapping(method = RequestMethod.POST, path="/note")
-    public void note(@RequestBody String request){
-        noteClient.addNote(request);
-        packClient.updateVersion(request);
+    @RequestMapping(method = RequestMethod.POST, path = "/note")
+    public void note(@RequestBody String request) {
+        try {
+            JSONObject jsonObject = new JSONObject(request);
+            JSONObject note = jsonObject.getJSONObject("note");
+            jsonObject.remove("note");
+            System.out.println(request);
+            noteClient.addNote(note.toString());
+            packClient.updateVersion(jsonObject.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

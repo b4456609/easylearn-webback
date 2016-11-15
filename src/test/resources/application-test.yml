@@ -13,3 +13,11 @@ ribbon:
 feign:
   hystrix:
     enabled: false
+
+easylearn-note:
+  ribbon:
+    listOfServers: localhost:8085
+
+easylearn-pack:
+  ribbon:
+    listOfServers: localhost:8085
