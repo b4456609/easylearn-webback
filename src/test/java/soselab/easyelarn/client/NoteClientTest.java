@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ActiveProfiles("test")
 public class NoteClientTest {
     @Rule
-    public PactProviderRule mockProvider = new PactProviderRule("easylearn-note", "localhost", 8085, this);
+    public PactProviderRule mockProvider = new PactProviderRule("easylearn_note", "localhost", 8085, this);
     private String note = "{\n" +
             "    \"id\": \"note1479018239603\",\n" +
             "    \"content\": \"a\",\n" +
@@ -39,7 +39,7 @@ public class NoteClientTest {
         client.addNote(note);
     }
 
-    @Pact(consumer = "easylearn-webback")
+    @Pact(consumer = "easylearn_webback")
     public PactFragment createFragment(PactDslWithProvider builder) {
         return builder
                 .uponReceiving("Add note")

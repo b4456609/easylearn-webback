@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ActiveProfiles("test")
 public class PackClientTest {
     @Rule
-    public PactProviderRule mockProvider = new PactProviderRule("easylearn-pack", "localhost", 8085, this);
+    public PactProviderRule mockProvider = new PactProviderRule("easylearn_pack", "localhost", 8085, this);
     private String pack = "{\n" +
             "  \"noteId\": \"note1479018239603\",\n" +
             "  \"packId\": \"pack1477403034413\",\n" +
@@ -38,7 +38,7 @@ public class PackClientTest {
         client.updateVersion(pack);
     }
 
-    @Pact(consumer = "easylearn-webback")
+    @Pact(consumer = "easylearn_webback")
     public PactFragment createFragment(PactDslWithProvider builder) {
         return builder
                 .uponReceiving("Modify version content after adding note")
