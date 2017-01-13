@@ -21,11 +21,14 @@ public class Mca {
     @Value("${spring.application.name}")
     private String serviceName;
 
+    //The package need to scan
+    private String packageName = "soselab.easyelarn";
+
     @Test
     public void test() {
         String mappingsJson = restTemplate.getForEntity("/mappings", String.class).getBody();
         String swaggerJson = restTemplate.getForEntity("/v2/api-docs", String.class).getBody();
-        ProjectReader projectReader = new ProjectReader(serviceName, mappingsJson, swaggerJson, "soselab.easyelarn");
+        ProjectReader projectReader = new ProjectReader(serviceName, mappingsJson, swaggerJson, packageName);
         projectReader.execute();
     }
 }
